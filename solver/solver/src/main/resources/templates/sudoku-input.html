@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku Solver</title>
+</head>
+<body>
+    <h1>Sudoku Solver</h1>
+    <form action="/solve" method="post">
+        <table>
+            <!-- Generate a 9x9 grid of input fields -->
+            <tr th:each="row, rowStat : ${#numbers.sequence(0, 8)}">
+                <td th:each="col, colStat : ${#numbers.sequence(0, 8)}">
+                    <input type="text" name="cell_${rowStat.index}_${colStat.index}" 
+                           pattern="[1-9]?" maxlength="1">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Solve</button>
+    </form>
+</body>
+</html>
